@@ -1,0 +1,55 @@
+{% extends 'accounts/layout.html' %}
+{% load static %}
+{% block stylesheet %}
+<style>
+body {
+    background-color: rgb(256, 256, 256);
+  }
+  
+  .logo {
+    font-family: 'Ranchers', cursive;
+  }
+  
+  .logo a {
+    color: rgba(0,0,0,.9);
+  }
+  
+  .logo a:hover,
+  .logo a:active {
+    text-decoration: none;
+  }
+</style>
+{% endblock %}
+
+{% block javascript %}
+{% endblock %}
+
+{% block body %}
+    <h1 class="text-center logo my-4">
+        <!-- <a href="#">FileSharePoint</a> -->
+    </h1>
+    <div class="d-flex justify-content-center">
+    <div class="col-6 mx-auto">
+      <img src="{% static 'img/first.jpg' %}">
+    </div>
+    <div class="col-4 mx-auto">
+    <div class="row justify-content-end">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title">Sign up</h3>
+              <form method="post" novalidate data-validate-username-url="">
+                {% csrf_token %}
+                {% include 'accounts/form.html' %}
+                <button type="submit" class="btn btn-block" style="background-color: #7AB2FF;">Create an account</button>
+              </form>
+            </div>
+            <div class="card-footer text-muted text-center">
+              Already have a Photoshare account? <a href="{% url 'login' %}">Log in</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+{% endblock %}
